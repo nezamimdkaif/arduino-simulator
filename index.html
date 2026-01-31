@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Circuit Simulator - FOSSEE OSHW</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Arduino Circuit Simulator</h1>
+        <p>FOSSEE OSHW Internship Screening Task</p>
+    </header>
+
+    <div class="container">
+        <!-- Left Sidebar - Component Palette -->
+        <aside class="sidebar">
+            <h2>Components</h2>
+            <div class="component-palette">
+                <div class="component-item" draggable="true" data-type="arduino">
+                    <div class="component-visual arduino-visual">
+                        <div class="arduino-board"></div>
+                    </div>
+                    <span>Arduino Uno</span>
+                </div>
+
+                <div class="component-item" draggable="true" data-type="led">
+                    <div class="component-visual led-visual">
+                        <div class="led-body"></div>
+                    </div>
+                    <span>LED</span>
+                </div>
+
+                <div class="component-item" draggable="true" data-type="button">
+                    <div class="component-visual button-visual">
+                        <div class="button-body"></div>
+                    </div>
+                    <span>Push Button</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Central Canvas Area -->
+        <main class="canvas-area">
+            <div class="canvas-header">
+                <h2>Circuit Canvas</h2>
+                <div class="canvas-controls">
+                    <button id="toggleView" class="btn secondary">Switch to Code View</button>
+                    <button id="simulateBtn" class="btn success">Start Simulation</button>
+                    <button id="stopBtn" class="btn danger" style="display:none;">Stop Simulation</button>
+                    <button id="autoWireBtn" class="btn primary">Auto Wire</button>
+                    <button id="clearCanvas" class="btn warning">Clear Canvas</button>
+                </div>
+            </div>
+
+            <div id="dropZone" class="drop-zone">
+                <p class="drop-hint">Drag components here to build your circuit</p>
+            </div>
+        </main>
+
+        <!-- Right Sidebar - Code View -->
+        <aside class="code-sidebar">
+            <h2>Generated Arduino Code</h2>
+            <button id="generateCode" class="btn success">Generate Code</button>
+            <pre id="codeDisplay">// Drag components to canvas</pre>
+
+            <div class="status-panel">
+                <h3>Circuit Status</h3>
+                <div id="statusContent">
+                    <p>No components added yet</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <!-- Pin Configuration Modal -->
+    <div id="pinModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Configure Pin</h2>
+            <div id="pinModalBody"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="./assets/js/simulation.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<svg width="80" height="100" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arduino Board -->
+  <rect x="10" y="10" width="60" height="80" rx="3" fill="#00979D"/>
+  
+  <!-- USB Port -->
+  <rect x="25" y="5" width="30" height="10" rx="2" fill="#C0C0C0"/>
+  
+  <!-- Power Jack -->
+  <circle cx="15" cy="20" r="4" fill="#000"/>
+  
+  <!-- Digital Pins -->
+  <rect x="15" y="30" width="50" height="3" fill="#000"/>
+  <rect x="15" y="36" width="50" height="3" fill="#000"/>
+  <rect x="15" y="42" width="50" height="3" fill="#000"/>
+  
+  <!-- Analog Pins -->
+  <rect x="15" y="55" width="50" height="3" fill="#000"/>
+  <rect x="15" y="61" width="50" height="3" fill="#000"/>
+  
+  <!-- IC Chip -->
+  <rect x="30" y="70" width="20" height="15" rx="1" fill="#000"/>
+  
+  <!-- Arduino Text -->
+  <text x="40" y="25" font-family="Arial" font-size="8" fill="#FFF" text-anchor="middle">UNO</text>
+</svg>
