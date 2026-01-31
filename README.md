@@ -18,13 +18,15 @@ This project is a web-based Arduino circuit simulator developed as part of the F
 ```
 arduino-simulator/
 ├── index.html              # Main application interface
-├── css/
-│   └── style.css          # Application styling
-├── js/
-│   ├── main.js            # Core UI and drag-drop logic
-│   └── simulation.js      # Simulation engine and state management
-├── assets/                # Icons and images (if any)
-└── README.md             # Project documentation
+├── assets/
+│   ├── css/
+│   │   └── style.css      # Application styling
+│   ├── icons/             # Component icons and images
+│   └── js/
+│       ├── main.js        # Core UI and drag-drop logic
+│       └── simulation.js  # Simulation engine and state management
+├── README.md              # Project documentation
+└── USAGE.md              # Usage instructions
 ```
 
 ## Requirements
@@ -113,9 +115,10 @@ start index.html
 
 The application follows a modular architecture with clear separation of concerns:
 
-* **main.js**: Handles UI interactions, drag-and-drop functionality, and code generation
-* **simulation.js**: Manages simulation loop, component states, and logic processing
-* **style.css**: Provides professional styling and responsive layout
+* **assets/js/main.js**: Handles UI interactions, drag-and-drop functionality, and code generation
+* **assets/js/simulation.js**: Manages simulation loop, component states, and logic processing
+* **assets/css/style.css**: Provides professional styling and responsive layout
+* **assets/icons/**: Contains component icons and visual assets
 
 ### Simulation Logic
 
