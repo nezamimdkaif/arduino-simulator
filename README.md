@@ -1,79 +1,212 @@
 # Arduino Circuit Simulator
-## FOSSEE OSHW Semester Long Internship 2025 - Screening Task
 
-This repository contains a complete web-based Arduino simulator developed for the FOSSEE OSHW Screening Task. It features drag-and-drop component placement, automatic wiring, and real-time logic simulation.
+## Overview
 
----
+This project is a web-based Arduino circuit simulator developed as part of the FOSSEE OSHW Semester Long Internship 2025 screening task. The simulator provides an interactive environment for building and testing Arduino circuits with real-time code generation and logic simulation capabilities.
 
-## Features Implemented
+## Features
 
-### Task 1: Web-Based Interface
-- **Component Palette**: Drag-and-drop functionality for Arduino Uno, LED, and Push Button.
-- **Visual Canvas**: Interactive area for building circuits.
-- **Code View**: Real-time display of auto-generated Arduino code.
-- **Simulation Controls**: Start and Stop buttons to control the simulation state.
+* **Drag-and-Drop Interface**: Intuitive component placement on visual canvas
+* **Automatic Wiring System**: Smart auto-connection to default Arduino pins
+* **Real-Time Code Generation**: Automatic Arduino sketch generation based on circuit configuration
+* **Interactive Simulation**: Live circuit simulation with button-controlled LED logic
+* **Pin Configuration**: Flexible pin reassignment with conflict prevention
+* **Visual Feedback**: Real-time component state visualization during simulation
 
-### Task 2: Auto-Wiring & Configuration
-- **Automatic Connections**: Components are automatically wired to default pins upon placement (LED to Pin 10, Button to Pin 2).
-- **Pin Configuration**: Users can reassign pins using a dropdown menu (Pins 2-13 available).
-- **Conflict Resolution**: Logic prevents assigning the same pin to multiple components.
+## Project Structure
 
-### Task 3: Code Generation & Logic Simulation
-- **Auto-Generation**: Valid Arduino code (`pinMode`, `digitalWrite`, `digitalRead`) is generated automatically based on the circuit configuration.
-- **Logic Level Simulation**: 
-    - Pressing the virtual Push Button sends a logical LOW signal (simulating pull-up).
-    - The Arduino logic processes this signal and turns the LED ON or OFF.
-    - Verified functionality with button-controlled LED logic.
-
----
-
-## Installation and Setup
-
-### Option 1: Local Server (Recommended)
-You can run the project using a local Python HTTP server:
-
-```bash
-python3 -m http.server 8000
 ```
-Then navigate to `http://localhost:8000` in your web browser.
+arduino-simulator/
+├── index.html              # Main application interface
+├── css/
+│   └── style.css          # Application styling
+├── js/
+│   ├── main.js            # Core UI and drag-drop logic
+│   └── simulation.js      # Simulation engine and state management
+├── assets/                # Icons and images (if any)
+└── README.md             # Project documentation
+```
+
+## Requirements
+
+### Browser Requirements
+* Modern web browser (Chrome 90+, Firefox 88+, Edge 90+, or Safari 14+)
+* JavaScript enabled
+* HTML5 Canvas support
+
+### System Requirements
+* No additional dependencies required
+* Runs entirely in the browser
+* Python 3.x (optional, for local server hosting)
+
+## Installation
+
+### Option 1: Local HTTP Server (Recommended)
+
+1. Navigate to the project directory:
+```bash
+cd arduino-simulator
+```
+
+2. Start a local HTTP server:
+```bash
+# Using Python 3
+python3 -m http.server 8000
+
+# Or using Python 2
+python -m SimpleHTTPServer 8000
+```
+
+3. Open your browser and navigate to:
+```
+http://localhost:8000
+```
 
 ### Option 2: Direct File Access
-Alternatively, simply open the `index.html` file directly in a modern web browser (Edge, Chrome, or Firefox).
 
----
+Simply open `index.html` directly in your web browser:
+```bash
+# On Linux
+xdg-open index.html
 
-## Usage Guide
+# On macOS
+open index.html
 
-1.  **Add Components**: Drag the Arduino Uno, LED, and Push Button from the left palette onto the central canvas.
-2.  **Generate Code**: Click the "Generate Code" button to produce the initial Arduino sketch.
-3.  **Configure Pins**: Use the dropdown menus on the LED or Button components to change their assigned pins. The code will update automatically.
-4.  **Start Simulation**: Click the green "Start Simulation" button.
-5.  **Interact**: Click and hold the Push Button on the canvas. The virtual LED will light up, demonstrating the logic control.
-6.  **Stop Simulation**: Click the "Stop Simulation" button to reset the state.
+# On Windows
+start index.html
+```
 
----
+## Usage
 
-## Submission Details
+### Building Your Circuit
 
-- **Candidate Name**: MD KAIF NEZAMI
-- **Department**: ECE (3rd Semester)
-- **Institution**: BIT SINDRI
-- **Email**: mdkaif.ece24@bitsindri.ac.in
-- **Date**: February 2025
+1. **Add Arduino Board**: Drag the Arduino Uno from the component palette to the canvas
+2. **Add Components**: Drag LED and Push Button components onto the canvas
+3. **Auto-Wiring**: Components are automatically connected to default pins:
+   - LED → Pin 10 (Digital PWM)
+   - Push Button → Pin 2 (Digital with pull-up)
 
----
+### Code Generation
+
+1. Click the **"Generate Code"** button to create Arduino sketch
+2. View the generated code in the code panel
+3. Code updates automatically when you modify pin configurations
+
+### Pin Configuration
+
+1. Click on any component to view its properties
+2. Use the dropdown menu to select a different pin (Pins 2-13 available)
+3. System prevents pin conflicts automatically
+4. Code regenerates with new pin assignments
+
+### Running Simulation
+
+1. Click the **"Start Simulation"** button (green)
+2. Interact with components:
+   - Click and hold the Push Button to activate it
+   - LED responds based on button state
+3. Click **"Stop Simulation"** button to reset
 
 ## Technical Implementation
 
-- **Language**: Core HTML, CSS, and Vanilla JavaScript.
-- **Architecture**:
-    - `main.js`: Handles UI interactions, drag-and-drop logic, and code generation.
-    - `simulation.js`: Manages the simulation loop and state updates.
-- **Simulation Logic**: The system simulates a standard Arduino loop, checking inputs and updating outputs at a fixed interval (50ms).
+### Architecture
 
----
+The application follows a modular architecture with clear separation of concerns:
+
+* **main.js**: Handles UI interactions, drag-and-drop functionality, and code generation
+* **simulation.js**: Manages simulation loop, component states, and logic processing
+* **style.css**: Provides professional styling and responsive layout
+
+### Simulation Logic
+
+The simulator implements a standard Arduino execution model:
+
+```
+setup() → called once at start
+loop()  → executed continuously (50ms interval)
+```
+
+* Push Button simulates active-LOW logic (pull-up configuration)
+* Digital read/write operations follow Arduino specifications
+* State changes trigger visual updates in real-time
+
+### Component Model
+
+Each component maintains:
+* Position coordinates (x, y)
+* Pin assignment
+* Current state (HIGH/LOW)
+* Visual representation
+
+## Features by Task
+
+### Task 1: Web-Based Interface ✓
+* Component palette with draggable elements
+* Visual canvas for circuit building
+* Real-time code view panel
+* Simulation control buttons
+
+### Task 2: Auto-Wiring & Configuration ✓
+* Automatic pin assignment on component placement
+* User-configurable pin selection (dropdown)
+* Pin conflict detection and prevention
+* Dynamic code updates on pin changes
+
+### Task 3: Code Generation & Logic Simulation ✓
+* Automatic Arduino code generation (`setup()`, `loop()`)
+* Proper `pinMode()`, `digitalWrite()`, `digitalRead()` usage
+* Functional button-to-LED control logic
+* Real-time simulation with visual feedback
+
+## Troubleshooting
+
+### Common Issues
+
+**Circuit not responding:**
+* Ensure simulation is started (green "Start" button)
+* Check that components are properly placed on canvas
+* Verify pin assignments are not conflicting
+
+**Code not generating:**
+* Ensure Arduino board is placed first
+* Check that components have valid pin assignments
+* Try refreshing the page and rebuilding circuit
+
+**Components not dragging:**
+* Verify JavaScript is enabled in browser
+* Try using a different browser
+* Clear browser cache and reload
+
+## Future Enhancements
+
+* Additional component support (resistors, sensors, displays)
+* Serial monitor functionality
+* Circuit save/load capability
+* Multi-board support
+* Breadboard view
+* Component library expansion
+
+## Submission Information
+
+* **Candidate**: MD KAIF NEZAMI
+* **Department**: Electronics and Communication Engineering (3rd Semester)
+* **Institution**: BIT Sindri
+* **Email**: mdkaif.ece24@bitsindri.ac.in
+* **Submission Date**: February 2025
+* **Project**: FOSSEE OSHW Semester Long Internship 2025 - Screening Task
 
 ## References
 
-- Wokwi Elements (UI Inspiration)
-- Arduino Reference Documentation
+* [Arduino Official Documentation](https://www.arduino.cc/reference/en/)
+* [Wokwi Arduino Simulator](https://wokwi.com/)
+* [FOSSEE OSHW Project](https://oshw.fossee.in/)
+
+## License
+
+This project is developed as part of an academic screening task for FOSSEE OSHW Internship Program.
+
+## Contributing
+
+As this is a screening task submission, contributions are not currently accepted. However, feedback and suggestions are welcome via email.
+
+---
