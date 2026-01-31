@@ -1,99 +1,72 @@
-# Arduino Simulator Usage Guide
+# Arduino Circuit Simulator - User Manual
 
-## Project Overview
+## Introduction
 
-This document provides detailed instructions on how to set up, run, and troubleshoot the Arduino Circuit Simulator. The project is designed to run in any standard web environment without complex dependencies.
+Welcome to the **Arduino Circuit Simulator**. This guide provides a comprehensive walkthrough of the simulator's interface and operational workflows. Unlike the technical overview in the README, this document is designed to help you master the day-to-day usage of the tool, from basic circuit building to advanced pin configuration.
 
----
+## Interface Tour
 
-## Technical Requirements
+The simulator interface is divided into three main common sections:
 
-- A modern web browser (Google Chrome, Firefox, or Microsoft Edge).
-- A text editor (VS Code, Sublime Text, or Notepad) for reviewing code.
-- Basic understanding of Arduino concepts (pins, digital logic).
+*   **Component Palette (Left Panel)**: Contains all available drag-and-drop components (Arduino Uno, LED, Push Button).
+*   **Circuit Canvas (Center)**: The main workspace where you build and interact with your circuit.
+*   **Code & Status Panel (Right Panel)**: Displays the generated Arduino C++ code and real-time status updates of your connections.
 
----
+## Getting Started: Your First Circuit
 
-## Installation & Setup
+Follow these steps to build standard "Button Controlled LED" circuit:
 
-### 1. File Structure Verification
-Ensure your project directory maintains the following structure for correct asset loading:
+### 1. Initialize the Board
+*   Locate the **Arduino Uno** in the Component Palette.
+*   Drag and drop it anywhere onto the central **Circuit Canvas**.
+*   *Note: You can only place one Arduino board per session.*
 
-```text
-ARDUINO-SIMULATOR/
-├── index.html
-├── README.md
-├── USAGE.md
-└── assets/
-    ├── css/
-    │   └── style.css
-    └── js/
-        ├── main.js
-        └── simulation.js
-```
+### 2. Add Peripherals
+*   Drag an **LED** component onto the canvas.
+*   Drag a **Push Button** component onto the canvas.
 
-### 2. Launching the Simulator
-You can run the simulator using one of the following methods:
+### 3. Automatic Wiring
+*   The system acts as a "smart breadboard". As soon as you drop components, they are automatically wired to default pins:
+    *   **LED** connects to **Pin 10**.
+    *   **Button** connects to **Pin 2**.
+*   Check the **Circuit Status** area in the bottom right; it should now show all components as "Added".
 
-**Method A: Visual Studio Code Live Server (Recommended)**
-1.  Open the project folder in VS Code.
-2.  Right-click on `index.html`.
-3.  Select "Open with Live Server".
+## detailed Operational Guide
 
-**Method B: Direct Launch**
-1.  Navigate to the project folder in your file explorer.
-2.  Double-click `index.html` to open it in your default web browser.
+### Pin Configuration
+You are not limited to the default pins. To customize your connections:
 
----
+1.  **Pin Selection**: Click the dropdown menu inside any component box (LED or Button).
+2.  **Available Pins**: Select any available digital pin (D2-D13).
+    *   *Smart Conflict Prevention*: Pins already in use by other components will be disabled in the dropdown to prevent short circuits.
+3.  **Code Update**:
+    *   **Important**: Changing a pin **does not** automatically regenerate the code (to prevent accidental overrides).
+    *   You will see a notification: *"Pin changed. Click 'Generate Code' to update."*
+    *   Click the green **Generate Code** button to refresh the sketch with your new pin mappings.
 
-## Operational Guide
+### Simulation Control
 
-### 1. Building the Circuit
--   Navigate to the **Components** palette on the left side of the interface.
--   Drag the **Arduino Uno** component onto the main canvas.
--   Drag an **LED** and a **Push Button** onto the canvas.
-    -   The system will automatically wire the LED to Pin 10 and the Button to Pin 2.
+Once your circuit is built and configured:
 
-### 2. Generating Code
--   Click the **Generate Code** button in the right-hand panel.
--   The system will generate a valid C++ Arduino sketch corresponding to your current wiring.
+1.  **Start Button**: Click the green **Start Simulation** button in the top toolbar.
+    *   The status panel will change to **▶ Simulation Active**.
+2.  **Interaction**:
+    *   **Press & Hold**: Click and hold your mouse on the **Push Button** component.
+    *   **Visual Feedback**:
+        *   The button visual will depress.
+        *   The LED component will light up (bright green).
+        *   The generated code logic is executing in real-time (50ms cycles).
+3.  **Stop**: Click the red **Stop Simulation** button to reset the state.
 
-### 3. Modifying Connections
--   To change a pin assignment, locate the dropdown menu inside the component box on the canvas.
--   Select a new digital pin (D2-D13) from the list.
--   The generated code will update instantly to reflect this change.
+### Code Generation Logic
 
-### 4. Running the Simulation
--   Click the **Start Simulation** button.
--   The status panel will indicate "Simulation Active".
--   Click and hold the **Push Button** component.
--   Observe the **LED** status change. The console log (F12) will also display debug information for verification.
+The logic generated is a standard debounce-free control loop:
 
----
+*   **Setup**: Configures LED as `OUTPUT` and Button as `INPUT_PULLUP`.
+*   **Loop**: Reads the button state. If the button signal is `LOW` (pressed), it writes `HIGH` to the LED.
 
-## Troubleshooting
+## Troubleshooting & Tips
 
-### Common Issues
-
-**Issue: The simulation does not start.**
--   **Cause**: Missing components on the canvas.
--   **Solution**: Ensure you have at least one Arduino, one LED, and one Button placed.
-
-**Issue: Button clicks are not registered.**
--   **Cause**: Simulation is not active.
--   **Solution**: Ensure you have clicked the "Start Simulation" button. The status indicator should be green.
-
-**Issue: Generated code does not appear.**
--   **Cause**: JavaScript error or empty canvas.
--   **Solution**: Check the browser console (F12) for errors and ensure assets are loaded correctly.
-
----
-
-## Contact Information
-
-For technical queries regarding this submission, please contact:
-
-**Md Kaif Nezami**
-Department of ECE
-BIT Sindri
-mdkaif.ece24@bitsindri.ac.in
+*   **"Code will be auto-generated"**: If you see this placeholder, make sure you have dragged all three required components (Arduino, LED, Button) onto the canvas.
+*   **Simulation Won't Start**: Ensure you have a complete circuit. The simulator requires at least one Arduino and one peripheral to run.
+*   **Resetting**: If the canvas gets cluttered, use the yellow **Clear Canvas** button to remove all components and start fresh.
