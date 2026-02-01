@@ -17,16 +17,16 @@ This project is a web-based Arduino circuit simulator developed as part of the F
 
 ```
 arduino-simulator/
-├── index.html              # Main application interface
+├── index.html              
 ├── assets/
 │   ├── css/
-│   │   └── style.css      # Application styling
-│   ├── icons/             # Component icons and images
+│   │   └── style.css     
+│   ├── icons/            
 │   └── js/
-│       ├── main.js        # Core UI and drag-drop logic
-│       └── simulation.js  # Simulation engine and state management
-├── README.md              # Project documentation
-└── USAGE.md              # Usage instructions
+│       ├── main.js        
+│       └── simulation.js 
+├── README.md              
+└── USAGE.md             
 ```
 
 ## Requirements
