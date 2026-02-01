@@ -1,4 +1,4 @@
-# Arduino Circuit Simulator
+.# Arduino Circuit Simulator
 
 ## Overview
 
@@ -143,19 +143,19 @@ Each component maintains:
 
 ## Features by Task
 
-### Task 1: Web-Based Interface ✓
+### Task 1: Web-Based Interface 
 * Component palette with draggable elements
 * Visual canvas for circuit building
 * Real-time code view panel
 * Simulation control buttons
 
-### Task 2: Auto-Wiring & Configuration ✓
+### Task 2: Auto-Wiring & Configuration 
 * Automatic pin assignment on component placement
 * User-configurable pin selection (dropdown)
 * Pin conflict detection and prevention
 * Dynamic code updates on pin changes
 
-### Task 3: Code Generation & Logic Simulation ✓
+### Task 3: Code Generation & Logic Simulation 
 * Automatic Arduino code generation (`setup()`, `loop()`)
 * Proper `pinMode()`, `digitalWrite()`, `digitalRead()` usage
 * Functional button-to-LED control logic
