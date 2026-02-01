@@ -1,4 +1,3 @@
-.# Arduino Circuit Simulator
 
 ## Overview
 
