@@ -42,7 +42,17 @@ arduino-simulator/
 
 ## Installation
 
-### Option 1: Local HTTP Server (Recommended)
+### Option 1: Live Demo (Recommended) 
+
+**Access the simulator directly - No installation required!**
+
+**Live URL:** https://698082fc7a017caae8fb4240--lustrous-faun-c12ff9.netlify.app/
+
+Simply open the link in your browser and start building circuits immediately.
+
+---
+
+### Option 2: Local HTTP Server
 
 1. Navigate to the project directory:
 ```bash
@@ -63,7 +73,7 @@ python -m SimpleHTTPServer 8000
 http://localhost:8000
 ```
 
-### Option 2: Direct File Access
+### Option 3: Direct File Access
 
 Simply open `index.html` directly in your web browser:
 ```bash
