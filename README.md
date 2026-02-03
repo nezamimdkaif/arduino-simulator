@@ -23,15 +23,15 @@ Live URL: https://698082fc7a017caae8fb4240--lustrous-faun-c12ff9.netlify.app/
 
 ```
 arduino-simulator/
-├── index.html              # Main application entry point
+├── index.html              
 ├── assets/
 │   ├── css/
-│   │   └── style.css       # Styling and layout
-│   ├── icons/              # Component visual assets
+│   │   └── style.css       
+│   ├── icons/            
 │   └── js/
-│       ├── main.js         # UI and code generation logic
-│       └── simulation.js   # Simulation engine
-└── README.md               # Documentation
+│       ├── main.js         
+│       └── simulation.js   
+└── README.md               
 ```
 
 ## System Requirements
